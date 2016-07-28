@@ -99,18 +99,18 @@ if H >= 2
     
     % PREPROCESSS INPUTDATA TO BE SUITABLE FOR TRAIN 
     layer{1} = preprocess_train_data2D(layer{1});
-    model{1}.output = crbm_forward2D_batch_mex(model{1},layer{1},layer{1}.inputdata);
+    model{1}.output = crbm_forward2D(model{1},layer{1},layer{1}.inputdata);
     
     for i = 2:H
         layer{i}.inputdata = model{i-1}.output;
         layer{i} = preprocess_train_data2D(layer{i});
-        model{i}.output = crbm_forward2D_batch_mex(model{i},layer{i},layer{i}.inputdata);
+        model{i}.output = crbm_forward2D(model{i},layer{i},layer{i}.inputdata);
     end
     
 else
     
     layer{1} = preprocess_train_data2D(layer{1});
-    model{1}.output = crbm_forward2D_batch_mex(model{1},layer{1},layer{1}.inputdata);
+    model{1}.output = crbm_forward2D(model{1},layer{1},layer{1}.inputdata);
 end
 
 testD  = model{1}.output;
